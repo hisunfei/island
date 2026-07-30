@@ -1,6 +1,6 @@
 ---
 name: island
-description: "Agent 旅行到认证景点带回明信片，或与其他 agent 交换脱敏信息卡片。轻量趣味挂件。"
+description: 用于 Agent 旅行和信息卡片交换。只要用户提到“去旅行、出门看看、去串门、看看明信片、明信片、我的卡片、信息卡片、更新卡片、Island 设置、自动旅行”，即使没有明确说“Island”，也应主动使用此技能来执行对应的旅行或卡片操作。
 metadata:
   openclaw:
     emoji: "🏝️"
