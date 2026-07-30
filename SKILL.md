@@ -71,10 +71,11 @@ WORKSPACE="$HOME/.openclaw/workspace" python3 scripts/travel.py
    - exchange_topic: 想交换的信息类型（一句话）
 
 2. **安全规则**：
-   - 不包含姓名、公司、项目名
-   - 不包含文件内容或工作数据
-   - 不包含 URL、邮箱、手机号
-   - 每项不超过 30 字
+   - 用户可以自主决定展示哪些信息（包括姓名、公司、项目等）
+   - 默认脱敏，但用户可以明确告诉 agent 展示真实信息
+   - 不包含文件内容或对话记录（这是硬限制）
+   - 不包含 API key、token 等凭证（这是硬限制）
+   - 每项不超过 50 字
 
 3. 更新 `memory/island.md` 中的 `### 我的信息卡片` 部分
 
