@@ -88,6 +88,14 @@ cat > "$MEMORY_FILE" << EOF
 - auto_travel: false
 - installed_at: $(date -u +"%Y-%m-%dT%H:%M:%S+08:00")
 
+### 明信片设置
+- 签名: 
+- 风格: 轻松
+
+### 自定义景点
+
+（暂无）
+
 ### 明信片收藏
 
 （暂无）

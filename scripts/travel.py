@@ -57,18 +57,86 @@ class IslandTravel:
                     config['github_configured'] = line.split(':', 1)[1].strip().lower() == 'true'
                 elif line.startswith('- pat:'):
                     config['github_pat'] = line.split(':', 1)[1].strip()
+                elif line.startswith('- 签名:'):
+                    config['postcard_signature'] = line.split(':', 1)[1].strip()
+                elif line.startswith('- 风格:'):
+                    config['postcard_style'] = line.split(':', 1)[1].strip()
+        
+        # 解析自定义景点
+        config['custom_spots'] = self._parse_custom_spots(content)
         
         return config
     
-    def _load_builtin_spots(self) -> list:
-        """加载内置景点"""
-        spots_file = self.skill_dir / "assets" / "spots_builtin.json"
-        if not spots_file.exists():
-            print("❌ 内置景点文件不存在")
-            return []
+    def _parse_custom_spots(self, content: str) -> list:
+        """解析自定义景点"""
+        custom_spots = []
         
-        with open(spots_file, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        # 查找 ### 自定义景点 部分
+        if '### 自定义景点' not in content:
+            return custom_spots
+        
+        # 提取自定义景点部分
+        custom_section = content.split('### 自定义景点')[1]
+        # 截断到下一个 ### 之前（但要注意 #### 不是下一个 section）
+        lines = custom_section.split('\n')
+        custom_lines = []
+        for line in lines:
+            # 如果是 ### 开头的行（但不是 ####），就停止
+            if line.startswith('### ') and not line.startswith('#### '):
+                break
+            custom_lines.append(line)
+        custom_section = '\n'.join(custom_lines)
+        
+        # 解析每个景点
+        current_spot = None
+        for line in custom_section.split('\n'):
+            line = line.strip()
+            
+            if line.startswith('#### '):
+                # 新景点开始
+                if current_spot:
+                    custom_spots.append(current_spot)
+                current_spot = {
+                    'id': f"custom_{len(custom_spots)}",
+                    'name': line.replace('#### ', ''),
+                    'description': '',
+                    'postcard_hint': '',
+                    'souvenir_type': 'knowledge',
+                    'souvenir_pool': [],
+                    'built_in': False
+                }
+            elif line.startswith('- 描述:') and current_spot:
+                current_spot['description'] = line.replace('- 描述:', '').strip()
+                current_spot['postcard_hint'] = current_spot['description']
+            elif line.startswith('- 纪念品:') and current_spot:
+                souvenirs = line.replace('- 纪念品:', '').strip()
+                # 按逗号分割多个纪念品
+                current_spot['souvenir_pool'] = [s.strip() for s in souvenirs.split('、') if s.strip()]
+        
+        # 添加最后一个景点
+        if current_spot:
+            custom_spots.append(current_spot)
+        
+        return custom_spots
+    
+    def _load_builtin_spots(self) -> list:
+        """加载内置景点和自定义景点"""
+        spots = []
+        
+        # 加载内置景点
+        spots_file = self.skill_dir / "assets" / "spots_builtin.json"
+        if spots_file.exists():
+            with open(spots_file, 'r', encoding='utf-8') as f:
+                spots.extend(json.load(f))
+        else:
+            print("⚠️  内置景点文件不存在")
+        
+        # 加载自定义景点
+        if self.config.get('custom_spots'):
+            spots.extend(self.config['custom_spots'])
+            print(f"📍 加载了 {len(self.config['custom_spots'])} 个自定义景点")
+        
+        return spots
     
     def _select_destination(self) -> Dict:
         """选择目的地"""
@@ -203,6 +271,11 @@ class IslandTravel:
         
         if postcard.get('souvenir'):
             postcard_text += f"🎁 带回来的小礼物：\n{postcard['souvenir']}\n\n"
+        
+        # 添加签名（如果有）
+        signature = self.config.get('postcard_signature')
+        if signature:
+            postcard_text += f"—— {signature}\n\n"
         
         postcard_text += "---\n"
         
