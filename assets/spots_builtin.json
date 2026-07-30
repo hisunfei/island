@@ -1,0 +1,130 @@
+[
+  {
+    "id": "openclaw_hq",
+    "name": "OpenClaw 总部",
+    "description": "OpenClaw 诞生的地方，一个充满代码咖啡香气的虚拟空间。墙上贴满了各种 agent 的明信片，白板上写着今天的 roadmap。",
+    "theme": "technology",
+    "built_in": true,
+    "postcard_hint": "描述你在这里看到的场景：墙上贴满明信片、白板上写着 roadmap、工程师们在调试 agent。带回来一个 OpenClaw 的小技巧或最佳实践。",
+    "souvenir_type": "knowledge",
+    "souvenir_pool": [
+      "用 cron 的 pacing 参数可以让定时任务更智能，自动避开用户忙碌时段",
+      "memory_search 支持语义搜索，不只是关键词匹配",
+      "sessions_spawn 配合 sessions_yield 可以实现真正的异步子任务",
+      "skill 的 description 字段决定了什么时候被触发，写好它很重要",
+      "用 dashboard 的 widget_put 可以给用户展示实时状态"
+    ]
+  },
+  {
+    "id": "prompt_forge",
+    "name": "Prompt 锻造坊",
+    "description": "一个古老的工坊，到处是叮叮当当的敲打声。每个工匠都在精心打磨自己的 prompt，像是铁匠在锻造一把好剑。墙上挂着一行字：'好的 prompt 是好钢用在刀刃上。'",
+    "theme": "ai",
+    "built_in": true,
+    "postcard_hint": "描述工坊的场景：铁匠敲打、火花四溅、墙上挂着名人名言。带回来一个 prompt 工程的实用技巧。",
+    "souvenir_type": "knowledge",
+    "souvenir_pool": [
+      "写 prompt 时先给角色（You are a...），再给任务，最后给约束条件，这个顺序效果最好",
+      "few-shot examples 比 long instructions 更有效，3 个例子通常就够",
+      "让 LLM 先思考再回答（Think step by step）可以显著提升复杂任务的准确率",
+      "System prompt 里放不变的规则，User prompt 里放变化的上下文，这样最灵活",
+      "在 prompt 末尾加 'Let me think about this carefully' 可以激活更深的推理"
+    ]
+  },
+  {
+    "id": "data_lab",
+    "name": "数据实验室",
+    "description": "一个明亮的实验室，大屏幕上实时跳动着各种数据图表。研究员们在讨论异常检测算法，角落里一台服务器在跑 A/B 测试。",
+    "theme": "data",
+    "built_in": true,
+    "postcard_hint": "描述实验室的场景：大屏幕数据图表、研究员讨论、服务器运行。带回来一个数据分析的实用技巧。",
+    "souvenir_type": "knowledge",
+    "souvenir_pool": [
+      "用 DuckDB 的 COPY 命令处理大 CSV 文件，比 pandas 快 10 倍",
+      "isolation forest 在高维数据上的异常检测效果比 Z-score 好很多",
+      "做 A/B 测试时，用贝叶斯方法可以更早得出结论，不需要等固定样本量",
+      "polars 的 lazy evaluation 在处理 500MB 以上文件时优势明显",
+      "时序数据先做 STL 分解（趋势+季节+残差），再分析残差，结果更准确"
+    ]
+  },
+  {
+    "id": "code_garden",
+    "name": "代码花园",
+    "description": "一个宁静的花园，不同的区域种着不同的编程语言。Python 区藤蔓茂盛，Rust 区铁栏精密，Go 区简洁利落。每棵树下都有一块石碑，刻着优雅的代码片段。",
+    "theme": "programming",
+    "built_in": true,
+    "postcard_hint": "描述花园的场景：不同语言区域、树下的石碑、优雅的代码。带回来一个编程技巧或优雅写法。",
+    "souvenir_type": "knowledge",
+    "souvenir_pool": [
+      "Python 的 walrus operator (:=) 可以在条件判断中同时赋值，减少重复代码",
+      "Rust 的 Result 类型配合 ? 运算符，错误处理比 try-catch 更优雅",
+      "Go 的 context 包是管理超时和取消的最佳实践，每个 goroutine 都应该接受 context",
+      "TypeScript 的 discriminated union 可以让类型系统帮你消灭 bug",
+      "写函数时，参数不超过 3 个；超过了就用对象/字典封装"
+    ]
+  },
+  {
+    "id": "memory_palace",
+    "name": "记忆宫殿",
+    "description": "一座宏伟的图书馆，每个书架代表一种记忆类型。日记区、技能区、偏好区、关系区... 管理员在整理新送来的记忆碎片，把它们归档到正确的位置。",
+    "theme": "ai",
+    "built_in": true,
+    "postcard_hint": "描述图书馆的场景：书架分类、管理员整理、记忆碎片。带回来一个 memory 管理的技巧。",
+    "souvenir_type": "knowledge",
+    "souvenir_pool": [
+      "memory 文件按日期命名（memory/YYYY-MM-DD.md）比一个大文件更好检索",
+      "MEMORY.md 只放长期不变的偏好和规则，日常记录放 memory/ 目录",
+      "定期归档旧的 memory 文件，保持活跃 memory 的精简",
+      "用 memory_search 的语义搜索比 grep 更聪明，能理解意图",
+      "在 memory 中用 markdown 标题分层，搜索时更精准"
+    ]
+  },
+  {
+    "id": "skill_market",
+    "name": "Skill 市场",
+    "description": "一个热闹的集市，每个摊位展示着不同的 skill。有的在卖数据分析工具，有的在展示自动化 workflow，还有的在演示 AI 创作。人来人往，讨价还价声此起彼伏。",
+    "theme": "ecosystem",
+    "built_in": true,
+    "postcard_hint": "描述集市的场景：各种摊位、展示 skill、人来人往。带回来一个有趣的 skill 使用技巧或搭配建议。",
+    "souvenir_type": "knowledge",
+    "souvenir_pool": [
+      "skill 的 description 写好触发词，可以让 agent 在正确的时机自动调用",
+      "把常用的 skill 组合成 workflow，效率比单独调用高很多",
+      "skill_workshop 可以帮你迭代和优化自己的 skill",
+      "多个 skill 可以协同工作：比如 data-analysis + presentation = 自动数据报告",
+      "定期用 openclaw skills check 检查 skill 版本，保持最新"
+    ]
+  },
+  {
+    "id": "cron_observatory",
+    "name": "定时观测站",
+    "description": "山顶上的天文台，巨大的钟摆在缓缓摆动。观测员们用精密仪器追踪时间的流动，确保每一个定时事件都在正确的时刻发生。",
+    "theme": "automation",
+    "built_in": true,
+    "postcard_hint": "描述天文台的场景：钟摆、精密仪器、观测员。带回来一个定时任务/自动化的技巧。",
+    "souvenir_type": "knowledge",
+    "souvenir_pool": [
+      "cron 的 pacing 参数可以防止任务过于频繁或过于稀疏",
+      "用 isolated sessionTarget 运行定时任务，不会污染主会话的上下文",
+      "定时任务的 message 要写得自包含，因为它可能在完全不同的上下文中执行",
+      "用 trigger.script 做条件判断，只在满足条件时才执行任务",
+      "batch 类型的 schedule 可以把多个小任务合并执行，减少 API 调用"
+    ]
+  },
+  {
+    "id": "privacy_sanctuary",
+    "name": "隐私圣殿",
+    "description": "一座被迷雾环绕的古老神殿。殿内的石碑上刻着一条铁律：'你看到的，不能带走；你带走的，必须脱敏。' 守卫们严格检查每一个进出的信息。",
+    "theme": "security",
+    "built_in": true,
+    "postcard_hint": "描述神殿的场景：迷雾、石碑铁律、守卫检查。带回来一个隐私/安全相关的最佳实践。",
+    "souvenir_type": "knowledge",
+    "souvenir_pool": [
+      "分享 workflow 前，一定要检查里面有没有硬编码的密钥或 token",
+      "用环境变量存储敏感信息，永远不要写死在代码或配置里",
+      "Git 提交前用 git-secrets 或类似工具扫描，防止泄露凭证",
+      "API 密钥定期轮换，不要一个 key 用到底",
+      "日志脱敏是基本功：手机号、邮箱、IP 地址都应该被掩码"
+    ]
+  }
+]
