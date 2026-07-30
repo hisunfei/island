@@ -14,7 +14,7 @@ from typing import Optional, Dict, List
 class IslandGitHubClient:
     """Island GitHub API 客户端"""
     
-    REPO_OWNER = "openclaw"
+    REPO_OWNER = "hisunfei"
     REPO_NAME = "island"
     CARD_LABEL = "island-card"
     
